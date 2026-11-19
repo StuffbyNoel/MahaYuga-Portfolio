@@ -41,7 +41,7 @@
         
         <!-- Project Titles (Centered) -->
         <div class="flex flex-col items-center text-center z-10 mb-12 w-full max-w-5xl">
-            <img src="./MahaYuga_TitleCard.png" alt="MahaYuga Title Card" class="h-44 md:h-64 lg:h-80 w-auto max-w-full mb-4 object-contain" onerror="this.style.display='none'; document.getElementById('title-fallback').classList.remove('hidden');">
+            <img src="./MahaYuga_TitleCard.jpg" alt="MahaYuga Title Card" class="h-44 md:h-64 lg:h-80 w-auto max-w-full mb-4 object-contain" onerror="this.style.display='none'; document.getElementById('title-fallback').classList.remove('hidden');">
             <h1 id="title-fallback" class="hidden font-bebas text-7xl md:text-9xl lg:text-[11rem] tracking-wide leading-none mb-4 text-white">
                 MAHAYUGA
             </h1>
@@ -55,10 +55,10 @@
         <a id="yt-showcase-link" href="https://youtu.be/Y6zmx_s86gs" target="_blank" rel="noopener noreferrer" aria-label="Watch MahaYuga on YouTube" class="w-full max-w-5xl aspect-video bg-[#0a0a0a] border border-[#2a2a2a] hover:border-white/50 rounded-sm relative group overflow-hidden flex items-center justify-center cursor-pointer transition-colors duration-300">
             
             <!-- Instant YouTube Thumbnail Fallback (Displays while video preview loads) -->
-            <img id="yt-thumbnail" src="./MahaYuga_TitleCard.png" alt="MahaYuga Video Thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 pointer-events-none hidden">
+            <img id="yt-thumbnail" src="https://img.youtube.com/vi/Y6zmx_s86gs/maxresdefault.jpg" alt="MahaYuga Video Thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 pointer-events-none">
 
             <!-- Auto-Playing Muted YouTube Preview (pointer-events-none lets clicks open the full YouTube link) -->
-            <iframe id="yt-preview-iframe" class="absolute inset-0 w-full h-full pointer-events-none scale-[1.02] opacity-85 group-hover:opacity-100 transition-opacity duration-500" src="" title="MahaYuga YouTube Preview" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="yt-preview-iframe" class="hidden absolute inset-0 w-full h-full pointer-events-none scale-[1.02] opacity-85 group-hover:opacity-100 transition-opacity duration-500" title="MahaYuga YouTube Preview" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
             <!-- Subtle Dark Vignette Overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
@@ -87,11 +87,11 @@
                 </div>
                 <div>
                     <h3 class="font-bebas text-2xl tracking-widest text-gray-400 mb-2">TOOLS</h3>
-                    <p class="text-sm tracking-wider text-gray-200">Blender, DaVinci Resolve, After Effects</p>
+                    <p class="text-sm tracking-wider text-gray-200">Blender, Substance Painter, After Effects</p>
                 </div>
                 <div>
                     <h3 class="font-bebas text-2xl tracking-widest text-gray-400 mb-2">TIMELINE</h3>
-                    <p class="text-sm tracking-wider text-gray-200">Feb 2026 - May 2026</p>
+                    <p class="text-sm tracking-wider text-gray-200">2026</p>
                 </div>
             </div>
 
@@ -99,10 +99,10 @@
             <div class="col-span-1 md:col-span-2">
                 <h3 class="font-bebas text-3xl tracking-widest text-white mb-4">THE CONCEPT</h3>
                 <p class="text-gray-300 font-light tracking-wide leading-relaxed mb-6">
-                    MahaYuga is a 3D animated piece inspired by the legendary title sequence of Game of Thrones
+                    MahaYuga is a 3D animated piece focused on atmospheric storytelling, dramatic lighting, and expressive motion. Every shot was crafted to convey scale and mood through deliberate camera choreography and detailed environment design.
                 </p>
                 <p class="text-gray-300 font-light tracking-wide leading-relaxed">
-                    The production started by filtering out possible locations to include in the animation factoring in their relevance and structure. The next step was blocking out the animation. Once the animation was confirmed the modelling started which included breaking down the castles to smaller pieces to create the build up animation (The breaking down of the castles were kept in mind while blocking out the animation). After which came the lighting, rendering and post production.
+                    The production pipeline spanned concept blocking, modeling, texturing, rigging, animation, and final compositing—balancing stylized visuals with physically grounded lighting and reflections.
                 </p>
             </div>
         </div>
@@ -111,29 +111,52 @@
         <div class="w-full max-w-5xl mt-20">
             <h3 class="font-bebas text-3xl tracking-widest text-white mb-6">STILLS & BREAKDOWN</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Still 1 -->
+                <!-- Pair 1: Final Keyframe 01 & Matching Clay Pass (Clay3) -->
                 <div class="aspect-video bg-[#0a0a0a] border border-[#2a2a2a] rounded-sm relative group overflow-hidden flex items-center justify-center">
-                    <p class="font-bebas text-2xl text-[#2a2a2a] tracking-widest group-hover:scale-105 transition-transform duration-500">
-                        KEYFRAME RENDER 01
-                    </p>
+                    <img src="./Keyframe1.jpg" alt="MahaYuga Keyframe Render 01" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <p class="hidden font-bebas text-2xl text-[#2a2a2a] tracking-widest">KEYFRAME RENDER 01</p>
+                    <span class="absolute bottom-3 left-3 bg-black/75 border border-white/15 backdrop-blur-sm px-2.5 py-0.5 rounded text-xs font-bebas tracking-widest text-gray-200 pointer-events-none">
+                        KEYFRAME 01
+                    </span>
                 </div>
-                <!-- Still 2 -->
                 <div class="aspect-video bg-[#0a0a0a] border border-[#2a2a2a] rounded-sm relative group overflow-hidden flex items-center justify-center">
-                    <p class="font-bebas text-2xl text-[#2a2a2a] tracking-widest group-hover:scale-105 transition-transform duration-500">
-                        KEYFRAME RENDER 02
-                    </p>
+                    <img src="./Clay3.png" alt="MahaYuga Clay Render 01" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <p class="hidden font-bebas text-2xl text-[#2a2a2a] tracking-widest">CLAY PASS 01</p>
+                    <span class="absolute bottom-3 left-3 bg-black/75 border border-white/15 backdrop-blur-sm px-2.5 py-0.5 rounded text-xs font-bebas tracking-widest text-gray-200 pointer-events-none">
+                        CLAY PASS 01
+                    </span>
                 </div>
-                <!-- Still 3 -->
+
+                <!-- Pair 2: Final Keyframe 02 & Matching Clay Pass (Clay2) -->
                 <div class="aspect-video bg-[#0a0a0a] border border-[#2a2a2a] rounded-sm relative group overflow-hidden flex items-center justify-center">
-                    <p class="font-bebas text-2xl text-[#2a2a2a] tracking-widest group-hover:scale-105 transition-transform duration-500">
-                        CLAY / WIREFRAME PASS
-                    </p>
+                    <img src="./Keyframe2.jpg" alt="MahaYuga Keyframe Render 02" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <p class="hidden font-bebas text-2xl text-[#2a2a2a] tracking-widest">KEYFRAME RENDER 02</p>
+                    <span class="absolute bottom-3 left-3 bg-black/75 border border-white/15 backdrop-blur-sm px-2.5 py-0.5 rounded text-xs font-bebas tracking-widest text-gray-200 pointer-events-none">
+                        KEYFRAME 02
+                    </span>
                 </div>
-                <!-- Still 4 -->
                 <div class="aspect-video bg-[#0a0a0a] border border-[#2a2a2a] rounded-sm relative group overflow-hidden flex items-center justify-center">
-                    <p class="font-bebas text-2xl text-[#2a2a2a] tracking-widest group-hover:scale-105 transition-transform duration-500">
-                        LIGHTING & COMPOSITING
-                    </p>
+                    <img src="./Clay2.png" alt="MahaYuga Clay Render 02" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <p class="hidden font-bebas text-2xl text-[#2a2a2a] tracking-widest">CLAY PASS 02</p>
+                    <span class="absolute bottom-3 left-3 bg-black/75 border border-white/15 backdrop-blur-sm px-2.5 py-0.5 rounded text-xs font-bebas tracking-widest text-gray-200 pointer-events-none">
+                        CLAY PASS 02
+                    </span>
+                </div>
+
+                <!-- Pair 3: Final Keyframe 03 & Matching Clay Pass (Clay1) -->
+                <div class="aspect-video bg-[#0a0a0a] border border-[#2a2a2a] rounded-sm relative group overflow-hidden flex items-center justify-center">
+                    <img src="./Keyframe3.jpg" alt="MahaYuga Keyframe Render 03" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <p class="hidden font-bebas text-2xl text-[#2a2a2a] tracking-widest">KEYFRAME RENDER 03</p>
+                    <span class="absolute bottom-3 left-3 bg-black/75 border border-white/15 backdrop-blur-sm px-2.5 py-0.5 rounded text-xs font-bebas tracking-widest text-gray-200 pointer-events-none">
+                        KEYFRAME 03
+                    </span>
+                </div>
+                <div class="aspect-video bg-[#0a0a0a] border border-[#2a2a2a] rounded-sm relative group overflow-hidden flex items-center justify-center">
+                    <img src="./Clay1.png" alt="MahaYuga Clay Render 03" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <p class="hidden font-bebas text-2xl text-[#2a2a2a] tracking-widest">CLAY PASS 03</p>
+                    <span class="absolute bottom-3 left-3 bg-black/75 border border-white/15 backdrop-blur-sm px-2.5 py-0.5 rounded text-xs font-bebas tracking-widest text-gray-200 pointer-events-none">
+                        CLAY PASS 03
+                    </span>
                 </div>
             </div>
         </div>
@@ -142,27 +165,45 @@
 
     <!-- YouTube Preview Setup -->
     <script>
-        // Replace 'YOUR_VIDEO_ID' with the ID from your YouTube URL
-        // Example: for https://www.youtube.com/watch?v=dQw4w9WgXcQ, the ID is 'dQw4w9WgXcQ'
-        const YOUTUBE_VIDEO_ID = 'YOUR_VIDEO_ID';
+        // Paste your FULL YouTube URL (watch, youtu.be, or shorts) OR just the 11-character Video ID
+        const YOUTUBE_URL_OR_ID = 'https://youtu.be/Y6zmx_s86gs';
 
-        if (YOUTUBE_VIDEO_ID && YOUTUBE_VIDEO_ID !== 'YOUR_VIDEO_ID') {
+        function extractYouTubeId(input) {
+            if (!input || input === 'YOUR_VIDEO_ID') return null;
+            const trimmed = input.trim();
+            // Match standard 11-char YouTube ID directly
+            if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
+            // Extract ID from full URLs (watch?v=, youtu.be/, shorts/, embed/)
+            const match = trimmed.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            return match ? match[1] : null;
+        }
+
+        const videoId = extractYouTubeId(YOUTUBE_URL_OR_ID);
+
+        if (videoId) {
             const showcaseLink = document.getElementById('yt-showcase-link');
             const previewIframe = document.getElementById('yt-preview-iframe');
             const thumbnailImg = document.getElementById('yt-thumbnail');
 
             // 1. Set click destination to the full YouTube video
-            showcaseLink.href = `https://www.youtube.com/watch?v=${YOUTUBE_VIDEO_ID}`;
+            showcaseLink.href = `https://www.youtube.com/watch?v=${videoId}`;
 
             // 2. Load YouTube's hosted HD thumbnail immediately (with fallback to standard quality)
-            thumbnailImg.src = `https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`;
+            thumbnailImg.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
             thumbnailImg.onerror = () => {
-                thumbnailImg.src = `https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/hqdefault.jpg`;
+                thumbnailImg.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
             };
             thumbnailImg.classList.remove('hidden');
 
             // 3. Stream a muted, auto-playing, looping preview directly from YouTube
-            previewIframe.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1`;
+            const originParam = window.location.protocol.startsWith('http')
+                ? `&origin=${encodeURIComponent(window.location.origin)}`
+                : '';
+
+            previewIframe.onload = () => {
+                previewIframe.classList.remove('hidden');
+            };
+            previewIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&rel=0&modestbranding=1&playsinline=1${originParam}`;
         }
     </script>
 
