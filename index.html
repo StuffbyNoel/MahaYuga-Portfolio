@@ -41,19 +41,41 @@
         
         <!-- Project Titles (Centered) -->
         <div class="flex flex-col items-center text-center z-10 mb-12 w-full max-w-5xl">
-            <img src="MahaYuga_TitleCard.png" alt="MahaYuga Title Card" class="h-80 md:h-96 lg:h-120 w-auto max-w-full mb-4 object-contain">
+            <img src="./MahaYuga_TitleCard.jpg" alt="MahaYuga Title Card" class="h-44 md:h-64 lg:h-80 w-auto max-w-full mb-4 object-contain" onerror="this.style.display='none'; document.getElementById('title-fallback').classList.remove('hidden');">
+            <h1 id="title-fallback" class="hidden font-bebas text-7xl md:text-9xl lg:text-[11rem] tracking-wide leading-none mb-4 text-white">
+                MAHAYUGA
+            </h1>
             <div class="bg-[#151515] border border-[#2a2a2a] rounded px-4 py-1.5 text-gray-200 font-bebas tracking-widest text-lg md:text-2xl mt-2">
                 3D Animation
             </div>
         </div>
 
-        <!-- Main Media Placeholder (Animation Film / Reel) -->
-        <div class="w-full max-w-5xl aspect-video bg-[#0a0a0a] border border-[#2a2a2a] rounded-sm relative group overflow-hidden flex items-center justify-center">
-            <!-- Replace this <p> with a <video> or YouTube/Vimeo <iframe> when ready -->
-            <p class="font-bebas text-3xl md:text-4xl text-[#2a2a2a] tracking-widest text-center px-4 group-hover:scale-110 transition-transform duration-700">
-                FINAL 3D ANIMATION / VIDEO EMBED
-            </p>
-        </div>
+        <!-- Main Clickable YouTube Preview Showcase (No local video file needed!) -->
+        <!-- Just paste your YouTube Video ID in the script at the bottom of this file -->
+        <a id="yt-showcase-link" href="https://youtu.be/Y6zmx_s86gs" target="_blank" rel="noopener noreferrer" aria-label="Watch MahaYuga on YouTube" class="w-full max-w-5xl aspect-video bg-[#0a0a0a] border border-[#2a2a2a] hover:border-white/50 rounded-sm relative group overflow-hidden flex items-center justify-center cursor-pointer transition-colors duration-300">
+            
+            <!-- Instant YouTube Thumbnail Fallback (Displays while video preview loads) -->
+            <img id="yt-thumbnail" src="./MahaYuga_TitleCard.png" alt="MahaYuga Video Thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 pointer-events-none hidden">
+
+            <!-- Auto-Playing Muted YouTube Preview (pointer-events-none lets clicks open the full YouTube link) -->
+            <iframe id="yt-preview-iframe" class="absolute inset-0 w-full h-full pointer-events-none scale-[1.02] opacity-85 group-hover:opacity-100 transition-opacity duration-500" src="" title="MahaYuga YouTube Preview" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+
+            <!-- Subtle Dark Vignette Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+
+            <!-- Centered Play Button & YouTube Prompt -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 z-10 pointer-events-none">
+                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/70 border border-white/60 backdrop-blur-sm flex items-center justify-center group-hover:bg-white group-hover:scale-110 transition-all duration-300 shadow-2xl">
+                    <!-- Play Icon SVG -->
+                    <svg class="w-7 h-7 md:w-8 md:h-8 text-white group-hover:text-black translate-x-0.5 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
+                <span class="font-bebas text-lg md:text-2xl tracking-widest text-white/90 bg-black/60 border border-white/20 px-4 py-1 rounded-full backdrop-blur-sm group-hover:border-white/60 transition-colors duration-300">
+                    WATCH ON YOUTUBE
+                </span>
+            </div>
+        </a>
 
         <!-- Project Details -->
         <div class="w-full max-w-5xl mt-14 grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -65,11 +87,11 @@
                 </div>
                 <div>
                     <h3 class="font-bebas text-2xl tracking-widest text-gray-400 mb-2">TOOLS</h3>
-                    <p class="text-sm tracking-wider text-gray-200">Blender, Substance Painter, After Effects</p>
+                    <p class="text-sm tracking-wider text-gray-200">Blender, DaVinci Resolve, After Effects</p>
                 </div>
                 <div>
                     <h3 class="font-bebas text-2xl tracking-widest text-gray-400 mb-2">TIMELINE</h3>
-                    <p class="text-sm tracking-wider text-gray-200">2026</p>
+                    <p class="text-sm tracking-wider text-gray-200">Feb 2026 - May 2026</p>
                 </div>
             </div>
 
@@ -77,7 +99,7 @@
             <div class="col-span-1 md:col-span-2">
                 <h3 class="font-bebas text-3xl tracking-widest text-white mb-4">THE CONCEPT</h3>
                 <p class="text-gray-300 font-light tracking-wide leading-relaxed mb-6">
-                    MahaYuga is a 3D animated piece focused on atmospheric storytelling, dramatic lighting, and expressive motion. Every shot was crafted to convey scale and mood through deliberate camera choreography and detailed environment design.
+                    MahaYuga is a 3D animated piece inspired by the legendary title sequence of Game of Thrones
                 </p>
                 <p class="text-gray-300 font-light tracking-wide leading-relaxed">
                     The production pipeline spanned concept blocking, modeling, texturing, rigging, animation, and final compositing—balancing stylized visuals with physically grounded lighting and reflections.
@@ -117,6 +139,32 @@
         </div>
 
     </section>
+
+    <!-- YouTube Preview Setup -->
+    <script>
+        // Replace 'YOUR_VIDEO_ID' with the ID from your YouTube URL
+        // Example: for https://www.youtube.com/watch?v=dQw4w9WgXcQ, the ID is 'dQw4w9WgXcQ'
+        const YOUTUBE_VIDEO_ID = 'YOUR_VIDEO_ID';
+
+        if (YOUTUBE_VIDEO_ID && YOUTUBE_VIDEO_ID !== 'YOUR_VIDEO_ID') {
+            const showcaseLink = document.getElementById('yt-showcase-link');
+            const previewIframe = document.getElementById('yt-preview-iframe');
+            const thumbnailImg = document.getElementById('yt-thumbnail');
+
+            // 1. Set click destination to the full YouTube video
+            showcaseLink.href = `https://www.youtube.com/watch?v=${YOUTUBE_VIDEO_ID}`;
+
+            // 2. Load YouTube's hosted HD thumbnail immediately (with fallback to standard quality)
+            thumbnailImg.src = `https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`;
+            thumbnailImg.onerror = () => {
+                thumbnailImg.src = `https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/hqdefault.jpg`;
+            };
+            thumbnailImg.classList.remove('hidden');
+
+            // 3. Stream a muted, auto-playing, looping preview directly from YouTube
+            previewIframe.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1`;
+        }
+    </script>
 
 </body>
 </html>
