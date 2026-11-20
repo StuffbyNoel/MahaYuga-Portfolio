@@ -50,32 +50,42 @@
             </div>
         </div>
 
-        <!-- Main Clickable YouTube Preview Showcase (No local video file needed!) -->
-        <!-- Just paste your YouTube Video ID in the script at the bottom of this file -->
-        <a id="yt-showcase-link" href="https://youtu.be/Y6zmx_s86gs" target="_blank" rel="noopener noreferrer" aria-label="Watch MahaYuga on YouTube" class="w-full max-w-5xl aspect-video bg-[#0a0a0a] border border-[#2a2a2a] hover:border-white/50 rounded-sm relative group overflow-hidden flex items-center justify-center cursor-pointer transition-colors duration-300">
-            
-            <!-- Instant YouTube Thumbnail Fallback (Displays while video preview loads) -->
-            <img id="yt-thumbnail" src="https://img.youtube.com/vi/Y6zmx_s86gs/maxresdefault.jpg" alt="MahaYuga Video Thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 pointer-events-none">
+        <!-- Main 3D Animation Video Showcase (16:9) -->
+        <!-- Rename your compressed video file to 'MahaYuga.mp4' or update the src below to match -->
+        <div class="w-full max-w-5xl aspect-video bg-[#0a0a0a] border border-[#2a2a2a] hover:border-white/40 rounded-sm relative group overflow-hidden flex items-center justify-center shadow-2xl transition-colors duration-300">
+            <video
+                id="mahayuga-video"
+                src="./MahaYuga.mp4"
+                poster="./Keyframe1.png"
+                autoplay
+                loop
+                muted
+                playsinline
+                controls
+                class="w-full h-full object-cover"
+            ></video>
 
-            <!-- Auto-Playing Muted YouTube Preview (pointer-events-none lets clicks open the full YouTube link) -->
-            <iframe id="yt-preview-iframe" class="hidden absolute inset-0 w-full h-full pointer-events-none scale-[1.02] opacity-85 group-hover:opacity-100 transition-opacity duration-500" title="MahaYuga YouTube Preview" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <!-- Label Badge -->
+            <span class="absolute top-3 left-3 bg-black/75 border border-white/15 backdrop-blur-sm px-2.5 py-0.5 rounded text-xs font-bebas tracking-widest text-gray-200 pointer-events-none">
+                3D ANIMATION &bull; 16:9
+            </span>
 
-            <!-- Subtle Dark Vignette Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
-
-            <!-- Centered Play Button & YouTube Prompt -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 z-10 pointer-events-none">
-                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/70 border border-white/60 backdrop-blur-sm flex items-center justify-center group-hover:bg-white group-hover:scale-110 transition-all duration-300 shadow-2xl">
-                    <!-- Play Icon SVG -->
-                    <svg class="w-7 h-7 md:w-8 md:h-8 text-white group-hover:text-black translate-x-0.5 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                </div>
-                <span class="font-bebas text-lg md:text-2xl tracking-widest text-white/90 bg-black/60 border border-white/20 px-4 py-1 rounded-full backdrop-blur-sm group-hover:border-white/60 transition-colors duration-300">
-                    WATCH ON YOUTUBE
-                </span>
-            </div>
-        </a>
+            <!-- Quick Mute / Unmute Toggle -->
+            <button
+                id="mahayuga-mute-btn"
+                type="button"
+                aria-label="Unmute MahaYuga video audio"
+                class="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-black/75 hover:bg-white hover:text-black border border-white/25 backdrop-blur-sm px-2.5 py-1 rounded text-xs font-bebas tracking-widest text-gray-200 transition-colors cursor-pointer active:scale-95"
+            >
+                <svg id="mahayuga-icon-muted" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
+                </svg>
+                <svg id="mahayuga-icon-unmuted" class="hidden w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"/>
+                </svg>
+                <span id="mahayuga-mute-label">MUTED</span>
+            </button>
+        </div>
 
         <!-- Project Details -->
         <div class="w-full max-w-5xl mt-14 grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -163,47 +173,41 @@
 
     </section>
 
-    <!-- YouTube Preview Setup -->
+    <!-- Video Audio Toggle Script -->
     <script>
-        // Paste your FULL YouTube URL (watch, youtu.be, or shorts) OR just the 11-character Video ID
-        const YOUTUBE_URL_OR_ID = 'https://youtu.be/Y6zmx_s86gs';
+        const mahaYugaVideo = document.getElementById('mahayuga-video');
+        const mahaYugaMuteBtn = document.getElementById('mahayuga-mute-btn');
+        const mahaYugaIconMuted = document.getElementById('mahayuga-icon-muted');
+        const mahaYugaIconUnmuted = document.getElementById('mahayuga-icon-unmuted');
+        const mahaYugaMuteLabel = document.getElementById('mahayuga-mute-label');
 
-        function extractYouTubeId(input) {
-            if (!input || input === 'YOUR_VIDEO_ID') return null;
-            const trimmed = input.trim();
-            // Match standard 11-char YouTube ID directly
-            if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
-            // Extract ID from full URLs (watch?v=, youtu.be/, shorts/, embed/)
-            const match = trimmed.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-            return match ? match[1] : null;
+        function syncMahaYugaMuteUI() {
+            if (!mahaYugaVideo || !mahaYugaMuteBtn) return;
+            const isMuted = mahaYugaVideo.muted;
+            mahaYugaIconMuted.classList.toggle('hidden', !isMuted);
+            mahaYugaIconUnmuted.classList.toggle('hidden', isMuted);
+            mahaYugaMuteLabel.textContent = isMuted ? 'MUTED' : 'SOUND ON';
+
+            mahaYugaMuteBtn.setAttribute('aria-label', `${isMuted ? 'Unmute' : 'Mute'} MahaYuga video audio`);
+            mahaYugaMuteBtn.classList.toggle('bg-white', !isMuted);
+            mahaYugaMuteBtn.classList.toggle('text-black', !isMuted);
+            mahaYugaMuteBtn.classList.toggle('border-white', !isMuted);
+            mahaYugaMuteBtn.classList.toggle('bg-black/75', isMuted);
+            mahaYugaMuteBtn.classList.toggle('text-gray-200', isMuted);
+            mahaYugaMuteBtn.classList.toggle('border-white/25', isMuted);
         }
 
-        const videoId = extractYouTubeId(YOUTUBE_URL_OR_ID);
+        if (mahaYugaVideo && mahaYugaMuteBtn) {
+            mahaYugaMuteBtn.addEventListener('click', () => {
+                mahaYugaVideo.muted = !mahaYugaVideo.muted;
+                if (!mahaYugaVideo.muted) {
+                    mahaYugaVideo.play().catch(() => {});
+                }
+                syncMahaYugaMuteUI();
+            });
 
-        if (videoId) {
-            const showcaseLink = document.getElementById('yt-showcase-link');
-            const previewIframe = document.getElementById('yt-preview-iframe');
-            const thumbnailImg = document.getElementById('yt-thumbnail');
-
-            // 1. Set click destination to the full YouTube video
-            showcaseLink.href = `https://www.youtube.com/watch?v=${videoId}`;
-
-            // 2. Load YouTube's hosted HD thumbnail immediately (with fallback to standard quality)
-            thumbnailImg.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-            thumbnailImg.onerror = () => {
-                thumbnailImg.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-            };
-            thumbnailImg.classList.remove('hidden');
-
-            // 3. Stream a muted, auto-playing, looping preview directly from YouTube
-            const originParam = window.location.protocol.startsWith('http')
-                ? `&origin=${encodeURIComponent(window.location.origin)}`
-                : '';
-
-            previewIframe.onload = () => {
-                previewIframe.classList.remove('hidden');
-            };
-            previewIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&rel=0&modestbranding=1&playsinline=1${originParam}`;
+            // Keep button synced with native player volume controls
+            mahaYugaVideo.addEventListener('volumechange', syncMahaYugaMuteUI);
         }
     </script>
 
